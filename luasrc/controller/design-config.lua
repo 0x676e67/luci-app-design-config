@@ -1,7 +1,7 @@
 module("luci.controller.design-config", package.seeall)
 
 function index()
-	if not nixio.fs.access('/www/luci-static/design/css/cascade.css') then
+	if not nixio.fs.access('/www/luci-static/design/css/style.css') then
 		return
 	end
 
