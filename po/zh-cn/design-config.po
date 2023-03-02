@@ -31,3 +31,12 @@ msgstr "强制暗色"
 
 msgid "You can choose Theme color mode here"
 msgstr "你可以选择喜欢的主题模式"
+
+msgid "Navigation bar proxy icon"
+msgstr "导航栏代理图标"
+
+msgid "Show OpenClash icon by default"
+msgstr "默认显示 OpenClash 图标"
+
+msgid "Save Changes"
+msgstr "保存更改"

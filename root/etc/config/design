@@ -1,2 +1,2 @@
 config global
-	option navbar_proxy_logo 'openclash'
+	option navbar_proxy_icon 'openclash'

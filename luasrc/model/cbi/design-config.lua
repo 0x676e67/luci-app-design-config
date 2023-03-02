@@ -14,9 +14,9 @@ local space_used = space_total - space_free
 
 local free_byte = space_free * fstat.frsize
 
-local navbar_proxy_logo
+local navbar_proxy_icon
 if nxfs.access('/etc/config/design') then
-	navbar_proxy_logo = uci:get_first('design', 'global', 'navbar_proxy_logo')
+	navbar_proxy_icon = uci:get_first('design', 'global', 'navbar_proxy_icon')
 end
 
 function glob(...)
@@ -42,16 +42,21 @@ o.default = mode
 o.rmempty = false
 o.description = translate('You can choose Theme color mode here')
 
-o = s:option(Value, 'navbar_proxy_logo', translate('[Light mode] Primary Color'), translate('A HEX Color ; ( Default: #5e72e4 )'))
-o.default = navbar_proxy_logo
-o.datatype = ufloat
+o = s:option(ListValue, 'navbar_proxy_icon', translate('Navigation bar proxy icon'))
+o:value('luci-app-openclash', translate('luci-app-openclash'))
+o:value('luci-app-ssr-plus', translate('luci-app-ssr-plus'))
+o:value('luci-app-vssr', translate('luci-app-vssr'))
+o:value('luci-app-passwall', translate('luci-app-passwall'))
+o:value('luci-app-passwall2', translate('luci-app-passwall2')
+o.default = navbar_proxy_icon
 o.rmempty = false
+o.description = translate('Show OpenClash icon by default')
 
 o = s:option(Button, 'save', translate('Save Changes'))
 o.inputstyle = 'reload'
 
 function br.handle(self, state, data)
-    if (state == FORM_VALID and data.mode ~= nil  and data.navbar_proxy_logo ~= nil) then
+    if (state == FORM_VALID and data.mode ~= nil  and data.navbar_proxy_icon ~= nil) then
         nxfs.writefile('/tmp/aaa', data)
         for key, value in pairs(data) do
             uci:set('design','@global[0]',key,value)
