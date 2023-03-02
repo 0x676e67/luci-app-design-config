@@ -65,5 +65,5 @@ jobs:
           generate_release_notes: true
           files: |
             ${{ steps.build.outputs.PACKAGE_TARGET }}
-            ${{ steps.build.outputs.I18N_TARGET }
+            ${{ steps.build.outputs.I18N_TARGET }}
             LICENSE
