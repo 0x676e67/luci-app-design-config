@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-design-config
-PKG_VERSION:=0.9
-PKG_RELEASE:=20220424
+PKG_VERSION:=1.0
+PKG_RELEASE:=20230302
 
 PKG_MAINTAINER:=jerrykuku <jerrykuku@qq.com>
 
