@@ -4,7 +4,7 @@ PKG_NAME:=luci-app-design-config
 PKG_VERSION:=1.0
 PKG_RELEASE:=20230302
 
-PKG_MAINTAINER:=jerrykuku <jerrykuku@qq.com>
+PKG_MAINTAINER:=gngpp <gngppz@gmail.com>
 
 LUCI_TITLE:=LuCI page for Design Config
 LUCI_PKGARCH:=all
