@@ -3,10 +3,10 @@ local nutil = require 'nixio.util'
 local name = 'design'
 local uci = require 'luci.model.uci'.cursor()
 
-local mode, navbar_proxy_icon
+local mode, navbar_proxy
 if nxfs.access('/etc/config/design') then
     mode = uci:get_first('design', 'global', 'mode')
-	navbar_proxy_icon = uci:get_first('design', 'global', 'navbar_proxy_icon')
+	navbar_proxy = uci:get_first('design', 'global', 'navbar_proxy')
 end
 
 function glob(...)
@@ -32,21 +32,21 @@ o.default = mode
 o.rmempty = false
 o.description = translate('You can choose Theme color mode here')
 
-o = s:option(ListValue, 'navbar_proxy_icon', translate('Navigation bar proxy icon'))
-o:value('openclash', translate('openclash'))
-o:value('shadowsocksr', translate('shadowsocksr'))
-o:value('vssr', translate('vssr'))
-o:value('passwall', translate('passwall'))
-o:value('passwall2', translate('passwall2'))
-o.default = navbar_proxy_icon
+o = s:option(ListValue, 'navbar_proxy', translate('Navigation bar proxy'))
+o:value('openclash', 'openclash')
+o:value('shadowsocksr', 'shadowsocksr')
+o:value('vssr', 'vssr')
+o:value('passwall', 'passwall')
+o:value('passwall2', 'passwall2')
+o.default = navbar_proxy
 o.rmempty = false
-o.description = translate('Show OpenClash icon by default')
+o.description = translate('OpenClash by default')
 
 o = s:option(Button, 'save', translate('Save Changes'))
 o.inputstyle = 'reload'
 
 function br.handle(self, state, data)
-    if (state == FORM_VALID and data.mode ~= nil  and data.navbar_proxy_icon ~= nil) then
+    if (state == FORM_VALID and data.mode ~= nil  and data.navbar_proxy ~= nil) then
         nxfs.writefile('/tmp/aaa', data)
         for key, value in pairs(data) do
             uci:set('design','@global[0]',key,value)
