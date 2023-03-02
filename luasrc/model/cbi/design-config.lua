@@ -33,11 +33,11 @@ o.rmempty = false
 o.description = translate('You can choose Theme color mode here')
 
 o = s:option(ListValue, 'navbar_proxy_icon', translate('Navigation bar proxy icon'))
-o:value('luci-app-openclash', translate('luci-app-openclash'))
-o:value('luci-app-ssr-plus', translate('luci-app-ssr-plus'))
-o:value('luci-app-vssr', translate('luci-app-vssr'))
-o:value('luci-app-passwall', translate('luci-app-passwall'))
-o:value('luci-app-passwall2', translate('luci-app-passwall2'))
+o:value('openclash', translate('openclash'))
+o:value('shadowsocksr', translate('shadowsocksr'))
+o:value('vssr', translate('vssr'))
+o:value('passwall', translate('passwall'))
+o:value('passwall2', translate('passwall2'))
 o.default = navbar_proxy_icon
 o.rmempty = false
 o.description = translate('Show OpenClash icon by default')
