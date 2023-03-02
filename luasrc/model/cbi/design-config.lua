@@ -29,7 +29,7 @@ function glob(...)
 end
 
 -- [[ 设置 ]]--
-br = SimpleForm('config', translate('Design Config'), translate('Here you can set the blur and transparency of the login page of design theme, and manage the background pictures and videos.[Chrome is recommended]'))
+br = SimpleForm('config', translate('Design Config'), translate('Here you can set the mode of the theme and change the proxy tool icon in the navigation bar. [Recommend Chrome]'))
 br.reset = false
 br.submit = false
 s = br:section(SimpleSection) 

@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: gngpp <gngppz@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.3.1\n"
+
+msgid "Design Config"
+msgstr "Design 主题设置"
+
+msgid "Here you can set the mode of the theme and change the proxy tool icon in the navigation bar. [Recommend Chrome]"
+msgstr "这里可以设置主题的模式和更换导航栏的代理工具图标。[建议使用 Chrome]"
+
+msgid "Theme mode"
+msgstr "主题模式"
+
+msgid "Follow System"
+msgstr "跟随系统"
+
+msgid "Force Light"
+msgstr "强制亮色"
+
+msgid "Force Dark"
+msgstr "强制暗色"
+
+msgid "You can choose Theme color mode here"
+msgstr "你可以选择喜欢的主题模式"
