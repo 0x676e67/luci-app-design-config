@@ -1,6 +1,10 @@
 # luci-app-design-config
 Design Theme Config Plugin
 
+### Features
+- Support changing theme dark/light mode
+- Support for replacing commonly used proxy icons
+
 ### Compile
 
 ```
