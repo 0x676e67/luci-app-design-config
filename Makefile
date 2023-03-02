@@ -8,7 +8,7 @@ PKG_MAINTAINER:=jerrykuku <jerrykuku@qq.com>
 
 LUCI_TITLE:=LuCI page for Design Config
 LUCI_PKGARCH:=all
-LUCI_DEPENDS:=+luci-compat luci-app-design-config
+LUCI_DEPENDS:=+luci-compat
 
 define Package/$(PKG_NAME)/conffiles
 /etc/config/design
