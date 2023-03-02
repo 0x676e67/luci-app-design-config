@@ -43,9 +43,11 @@ jobs:
           PACKAGE_TARGET="$(find bin/ | grep luci-app-design-config)"
           I18N_TARGET="$(find bin/ | grep luci-i18n-design-config)"
           echo "PACKAGE_TARGET=$(pwd)/$PACKAGE_TARGET"
-          echo "PACKAGE_TARGET=$(pwd)/$PACKAGE_TARGET" >> $GITHUB_OUTPUT
           echo "I18N_TARGET=$(pwd)/$I18N_TARGET"
-          echo "I18N_TARGET=$(pwd)/$I18N_TARGET" >> $GITHUB_OUTPUT
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
+          echo "$(pwd)/$PACKAGE_TARGET" >> $GITHUB_OUTPUT
+          echo "$(pwd)/$I18N_TARGET" >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
       - name: Get tag
         id: tag
@@ -64,6 +66,5 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag }}
           generate_release_notes: true
           files: |
-            ${{ steps.build.outputs.PACKAGE_TARGET }}
-            ${{ steps.build.outputs.I18N_TARGET }}
+            ${{ steps.build.outputs.JSON_RESPONSE }}
             LICENSE
