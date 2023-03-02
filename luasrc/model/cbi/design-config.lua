@@ -14,8 +14,9 @@ local space_used = space_total - space_free
 
 local free_byte = space_free * fstat.frsize
 
-local navbar_proxy_icon
+local mode, navbar_proxy_icon
 if nxfs.access('/etc/config/design') then
+    mode = uci:get_first('design', 'global', 'mode')
 	navbar_proxy_icon = uci:get_first('design', 'global', 'navbar_proxy_icon')
 end
 
@@ -47,7 +48,7 @@ o:value('luci-app-openclash', translate('luci-app-openclash'))
 o:value('luci-app-ssr-plus', translate('luci-app-ssr-plus'))
 o:value('luci-app-vssr', translate('luci-app-vssr'))
 o:value('luci-app-passwall', translate('luci-app-passwall'))
-o:value('luci-app-passwall2', translate('luci-app-passwall2')
+o:value('luci-app-passwall2', translate('luci-app-passwall2'))
 o.default = navbar_proxy_icon
 o.rmempty = false
 o.description = translate('Show OpenClash icon by default')
