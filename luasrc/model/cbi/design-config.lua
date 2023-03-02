@@ -4,7 +4,7 @@ local opkg = require 'luci.model.ipkg'
 local sys = require 'luci.sys'
 local http = require 'luci.http'
 local nutil = require 'nixio.util'
-local name = 'argon'
+local name = 'design'
 local uci = require 'luci.model.uci'.cursor()
 
 local fstat = nxfs.statvfs(opkg.overlay_root())
@@ -15,15 +15,15 @@ local space_used = space_total - space_free
 local free_byte = space_free * fstat.frsize
 
 local primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, mode
-if nxfs.access('/etc/config/argon') then
-	primary = uci:get_first('argon', 'global', 'primary')
-	dark_primary = uci:get_first('argon', 'global', 'dark_primary')
-	blur_radius = uci:get_first('argon', 'global', 'blur')
-	blur_radius_dark = uci:get_first('argon', 'global', 'blur_dark')
-	blur_opacity = uci:get_first('argon', 'global', 'transparency')
-	blur_opacity_dark = uci:get_first('argon', 'global', 'transparency_dark')
-	mode = uci:get_first('argon', 'global', 'mode')
-	bing_background = uci:get_first('argon', 'global', 'bing_background')
+if nxfs.access('/etc/config/design') then
+	primary = uci:get_first('design', 'global', 'primary')
+	dark_primary = uci:get_first('design', 'global', 'dark_primary')
+	blur_radius = uci:get_first('design', 'global', 'blur')
+	blur_radius_dark = uci:get_first('design', 'global', 'blur_dark')
+	blur_opacity = uci:get_first('design', 'global', 'transparency')
+	blur_opacity_dark = uci:get_first('design', 'global', 'transparency_dark')
+	mode = uci:get_first('design', 'global', 'mode')
+	bing_background = uci:get_first('design', 'global', 'bing_background')
 end
 
 function glob(...)
@@ -50,7 +50,7 @@ local transparency_sets = {
 }
 
 -- [[ 模糊设置 ]]--
-br = SimpleForm('config', translate('Argon Config'), translate('Here you can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos.[Chrome is recommended]'))
+br = SimpleForm('config', translate('Design Config'), translate('Here you can set the blur and transparency of the login page of design theme, and manage the background pictures and videos.[Chrome is recommended]'))
 br.reset = false
 br.submit = false
 s = br:section(SimpleSection) 
@@ -114,9 +114,9 @@ function br.handle(self, state, data)
     if (state == FORM_VALID and data.blur ~= nil and data.blur_dark ~= nil and data.transparency ~= nil and data.transparency_dark ~= nil and data.mode ~= nil) then
         nxfs.writefile('/tmp/aaa', data)
         for key, value in pairs(data) do
-            uci:set('argon','@global[0]',key,value)
+            uci:set('design','@global[0]',key,value)
         end 
-        uci:commit('argon')
+        uci:commit('design')
     end
     return true
 end
@@ -125,14 +125,14 @@ ful = SimpleForm('upload', translate('Upload  (Free: ') .. wa.byte_format(free_b
 ful.reset = false
 ful.submit = false
 
-sul = ful:section(SimpleSection, '', translate("Upload file to '/www/luci-static/argon/background/'"))
+sul = ful:section(SimpleSection, '', translate("Upload file to '/www/luci-static/design/background/'"))
 fu = sul:option(FileUpload, '')
-fu.template = 'argon-config/other_upload'
+fu.template = 'design-config/other_upload'
 um = sul:option(DummyValue, '', nil)
-um.template = 'argon-config/other_dvalue'
+um.template = 'design-config/other_dvalue'
 
 local dir, fd
-dir = '/www/luci-static/argon/background/'
+dir = '/www/luci-static/design/background/'
 nxfs.mkdir(dir)
 http.setfilehandler(
     function(meta, chunk, eof)
@@ -156,7 +156,7 @@ http.setfilehandler(
         if eof and fd then
             fd:close()
             fd = nil
-            um.value = translate('File saved to') .. ' "/www/luci-static/argon/background/' .. meta.file .. '"'
+            um.value = translate('File saved to') .. ' "/www/luci-static/design/background/' .. meta.file .. '"'
         end
     end
 )
