@@ -40,15 +40,19 @@ jobs:
           echo "CONFIG_PACKAGE_luci-theme-design=y" >> .config
           make defconfig
           make package/luci-app-design-config/compile V=s -j$(nproc)
-          PACKAGE_TARGET="$(find bin/ | grep luci-app-design-config)"
-          I18N_TARGET="$(find bin/ | grep luci-i18n-design-config)"
+          cd ..
+          PACKAGE_TARGET="$(find openwrt-sdk/bin/ | grep luci-app-design-config)"
+          I18N_TARGET="$(find openwrt-sdk/bin/ | grep luci-i18n-design-config)"
           echo "PACKAGE_TARGET=$(pwd)/$PACKAGE_TARGET"
           echo "I18N_TARGET=$(pwd)/$I18N_TARGET"
+
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
           echo "$PACKAGE_TARGET" >> $GITHUB_OUTPUT
           echo "$I18N_TARGET" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
+
           echo "status=success" >> $GITHUB_OUTPUT
+
       - name: Get tag
         id: tag
         uses: dawidd6/action-get-tag@v1
