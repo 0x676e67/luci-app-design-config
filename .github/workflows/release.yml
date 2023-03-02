@@ -45,8 +45,8 @@ jobs:
           echo "PACKAGE_TARGET=$(pwd)/$PACKAGE_TARGET"
           echo "I18N_TARGET=$(pwd)/$I18N_TARGET"
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
-          echo "$(pwd)/$PACKAGE_TARGET" >> $GITHUB_OUTPUT
-          echo "$(pwd)/$I18N_TARGET" >> $GITHUB_OUTPUT
+          echo "$PACKAGE_TARGET" >> $GITHUB_OUTPUT
+          echo "$I18N_TARGET" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
       - name: Get tag
@@ -67,4 +67,3 @@ jobs:
           generate_release_notes: true
           files: |
             ${{ steps.build.outputs.JSON_RESPONSE }}
-            LICENSE
