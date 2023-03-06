@@ -44,7 +44,7 @@ o = s:option(Button, 'save', translate('Save Changes'))
 o.inputstyle = 'reload'
 
 function br.handle(self, state, data)
-    if (state == FORM_VALID and data.mode ~= nil  and data.navbar_proxy ~= nil) then
+    if (state == FORM_VALID and data.mode ~= nil and data.navbar ~= nil and data.navbar_proxy ~= nil) then
         nxfs.writefile('/tmp/aaa', data)
         for key, value in pairs(data) do
             uci:set('design','@global[0]',key,value)
