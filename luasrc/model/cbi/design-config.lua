@@ -23,6 +23,13 @@ o.default = mode
 o.rmempty = false
 o.description = translate('You can choose Theme color mode here')
 
+o = s:option(ListValue, 'navbar', translate('Navigation bar setting'))
+o:value('display', translate('Display navigation bar'))
+o:value('close', translate('Close navigation bar'))
+o.default = navbar
+o.rmempty = false
+o.description = translate('The navigation bar is display by default')
+
 o = s:option(ListValue, 'navbar_proxy', translate('Navigation bar proxy'))
 o:value('openclash', 'openclash')
 o:value('shadowsocksr', 'shadowsocksr')
