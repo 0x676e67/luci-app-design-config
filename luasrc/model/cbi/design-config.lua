@@ -3,9 +3,10 @@ local nutil = require 'nixio.util'
 local name = 'design'
 local uci = require 'luci.model.uci'.cursor()
 
-local mode, navbar_proxy
+local mode, navbar, navbar_proxy
 if nxfs.access('/etc/config/design') then
     mode = uci:get_first('design', 'global', 'mode')
+    navbar = uci:get_first('design', 'global', 'navbar')
 	navbar_proxy = uci:get_first('design', 'global', 'navbar_proxy')
 end
 
