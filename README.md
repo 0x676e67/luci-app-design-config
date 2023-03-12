@@ -3,7 +3,7 @@ Design Theme Config Plugin
 
 ### Features
 - Support changing theme dark/light mode
-- support display/hide navbar
+- Support display/hide navbar
 - Support for replacing commonly used proxy icons
 
 ### Compile
